@@ -1,11 +1,12 @@
 import { Label } from "@radix-ui/react-label";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "@radix-ui/react-select";
 import { Slider } from "@radix-ui/react-slider";
-import { FileVideo, Github, Upload, Wand2 } from "lucide-react";
+import { Github, Wand2 } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { SelectItem } from "./components/ui/select";
 import { Separator } from "./components/ui/separator";
 import { Textarea } from "./components/ui/textarea";
+import { VideoInputForm } from "./components/ui/video-input-form";
 
 
 export function App() {
@@ -47,33 +48,7 @@ export function App() {
         </div>
 
         <aside className="w-80 space-y-6">
-          <form className="space-y-6">
-            <label 
-              htmlFor="video"
-              className="border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5" 
-            >
-              <FileVideo className="w-4 h-4" />
-              Selecione um Video
-            </label>
-              
-            <input type="file" id="video" accept="video/mp4" className="sr-only"/>
-
-            <Separator />
-
-            <div className="space-y-2">
-              <Label htmlFor="trancripition_prompt">Prompt de transcrição</Label>
-              <Textarea 
-                id="trancripition_prompt" 
-                className="h-20 leading-relaxed resize-none" 
-                placeholder="Inclua palavras-chave mencionadas no vídeo separadas por virgula ( , )"
-              />
-            </div>
-
-            <Button type="submit" className="w-full">
-              Carregar Vídeo
-              <Upload className="w-4 h-4 ml-2"/>
-            </Button>
-          </form>
+          <VideoInputForm />
 
           <Separator />
 
@@ -85,8 +60,8 @@ export function App() {
                   <SelectValue placeholder="Selecione um prompt..."/>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="gpt3.5">Título do Youtube</SelectItem>
-                  <SelectItem value="gpt3.5">Descrição do Youtube</SelectItem>
+                  <SelectItem value="title">Título do Youtube</SelectItem>
+                  <SelectItem value="description">Descrição do Youtube</SelectItem>
                 </SelectContent>
               </Select>
             </div>
